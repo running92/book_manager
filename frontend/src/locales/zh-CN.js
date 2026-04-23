@@ -8,7 +8,7 @@ export default {
     enabled: '正常', disabled: '禁用', available: '上架', unavailable: '下架',
     borrowed: '借阅中', returned: '已归还', overdue: '已逾期'
   },
-  login: { title: '毕业设计图书管理系统', subtitle: 'Library Management System', username: '用户名', password: '密码', button: '登录', demo: '管理员：admin / admin123；读者：user1 / 123456' },
+  login: { title: '毕业设计图书管理系统', subtitle: 'Library Management System', username: '用户名', password: '密码', button: '登录' },
   menu: { dashboard: '首页', books: '图书管理', categories: '分类管理', users: '用户管理', borrow: '借阅管理', myBorrow: '我的借阅', profile: '个人中心' },
   dashboard: {
     title: '系统首页', bookTotal: '图书总数', availableTotal: '可借库存', borrowedTotal: '已借出', userTotal: '用户总数',
@@ -27,4 +27,3 @@ export default {
   validate: { required: '该字段不能为空', passwordLength: '密码至少 6 位' },
   notFound: { title: '页面不存在', backHome: '返回首页' }
 }
-

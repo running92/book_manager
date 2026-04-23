@@ -5,8 +5,8 @@
 ## 技术栈
 
 - 前端：Vue 3、Vite、Element Plus、Pinia、Vue Router、vue-i18n、Axios、ECharts
-- 后端：Python、Flask、Flask-SQLAlchemy、Flask-JWT-Extended、SQLite
-- 部署：Vue Hash 路由 SPA，Flask 托管 `frontend/dist`
+- 后端：Python、Flask、Flask-SQLAlchemy、Flask-JWT-Extended、SQLite、Gunicorn
+- 部署：Vue Hash 路由 SPA，Gunicorn 启动 Flask 并托管 `frontend/dist`
 
 ## 功能模块
 
@@ -78,7 +78,7 @@ npm install
 npm run dev
 ```
 
-访问：`http://localhost:5173`。Vite 已配置 `/api` 和 `/uploads` 代理到 `http://localhost:5000`。
+访问：`http://localhost:5173`。`python app.py` 会通过 Gunicorn 监听 `http://localhost:5000`，Vite 已配置 `/api` 和 `/uploads` 代理到该后端地址。如需开发热重载后端，可执行 `GUNICORN_RELOAD=1 python app.py`。
 
 ## 打包与演示部署
 
@@ -89,7 +89,7 @@ cd ../backend
 python app.py
 ```
 
-访问：`http://localhost:5000`。如果端口被占用，可使用 `PORT=5001 python app.py` 并访问 `http://localhost:5001`。Flask 会托管 `frontend/dist`，非 `/api/*` 请求会回退到前端 `index.html`。
+访问：`http://localhost:5000`。如果端口被占用，可使用 `PORT=5001 python app.py` 并访问 `http://localhost:5001`。也可以直接执行 `gunicorn -w 2 -b 0.0.0.0:5000 'app:create_app()'`。Flask 会托管 `frontend/dist`，非 `/api/*` 请求会回退到前端 `index.html`。
 
 ## SPA 路由说明
 

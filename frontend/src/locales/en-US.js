@@ -8,7 +8,7 @@ export default {
     enabled: 'Active', disabled: 'Disabled', available: 'Available', unavailable: 'Disabled',
     borrowed: 'Borrowed', returned: 'Returned', overdue: 'Overdue'
   },
-  login: { title: 'Graduation Library Management System', subtitle: 'Library Management System', username: 'Username', password: 'Password', button: 'Login', demo: 'Admin: admin / admin123; Reader: user1 / 123456' },
+  login: { title: 'Graduation Library Management System', subtitle: 'Library Management System', username: 'Username', password: 'Password', button: 'Login' },
   menu: { dashboard: 'Dashboard', books: 'Books', categories: 'Categories', users: 'Users', borrow: 'Borrow Records', myBorrow: 'My Borrowing', profile: 'Profile' },
   dashboard: {
     title: 'Dashboard', bookTotal: 'Books', availableTotal: 'Available Stock', borrowedTotal: 'Borrowed', userTotal: 'Users',
@@ -27,4 +27,3 @@ export default {
   validate: { required: 'Required', passwordLength: 'Password must be at least 6 characters' },
   notFound: { title: 'Page Not Found', backHome: 'Back Home' }
 }
-

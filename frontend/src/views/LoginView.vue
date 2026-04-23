@@ -12,7 +12,6 @@
         </el-form-item>
         <el-button type="primary" :loading="loading" style="width:100%" @click="submit">{{ t('login.button') }}</el-button>
       </el-form>
-      <p class="muted" style="margin-top:18px">{{ t('login.demo') }}</p>
       <div style="margin-top:14px">
         <el-button text @click="setLang('zh-CN')">中文</el-button>
         <el-button text @click="setLang('en-US')">EN</el-button>
@@ -35,7 +34,7 @@ const auth = useAuthStore()
 const app = useAppStore()
 const formRef = ref()
 const loading = ref(false)
-const form = reactive({ username: 'admin', password: 'admin123' })
+const form = reactive({ username: '', password: '' })
 const rules = computed(() => ({
   username: [{ required: true, message: t('validate.required'), trigger: 'blur' }],
   password: [{ required: true, message: t('validate.required'), trigger: 'blur' }]
@@ -57,4 +56,3 @@ async function submit() {
   }
 }
 </script>
-
