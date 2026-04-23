@@ -11,7 +11,7 @@ application = app
 def run_with_gunicorn():
     from gunicorn.app.wsgiapp import run
 
-    port = os.environ.get("PORT", "5001")
+    port = os.environ.get("PORT", "5000")
     workers = os.environ.get("GUNICORN_WORKERS", "1")
     bind = os.environ.get("GUNICORN_BIND", f"0.0.0.0:{port}")
     argv = ["gunicorn", "-w", workers, "-b", bind]

@@ -16,7 +16,7 @@
     <div class="page-card">
       <el-table :data="list" :empty-text="t('common.empty')" stripe>
         <el-table-column :label="t('book.cover')" width="80">
-          <template #default="{ row }"><img v-if="row.cover_image" :src="row.cover_image" class="book-cover" /><div v-else class="book-cover"></div></template>
+          <template #default="{ row }"><img v-if="row.cover_image" :src="assetUrl(row.cover_image)" class="book-cover" /><div v-else class="book-cover"></div></template>
         </el-table-column>
         <el-table-column :label="t('book.titleZh')" min-width="180"><template #default="{ row }">{{ bookTitle(row) }}</template></el-table-column>
         <el-table-column :label="t('book.isbn')" prop="isbn" width="150" />
@@ -55,7 +55,7 @@
           <el-col :span="24">
             <el-form-item :label="t('book.cover')">
               <el-upload :show-file-list="false" :http-request="handleUpload"><el-button icon="Upload">{{ t('common.upload') }}</el-button></el-upload>
-              <img v-if="form.cover_image" :src="form.cover_image" class="book-cover" style="margin-left:12px" />
+              <img v-if="form.cover_image" :src="assetUrl(form.cover_image)" class="book-cover" style="margin-left:12px" />
             </el-form-item>
           </el-col>
           <el-col :span="12"><el-form-item :label="t('book.descZh')"><el-input v-model="form.description_zh" type="textarea" :rows="3" /></el-form-item></el-col>
@@ -80,6 +80,7 @@ import { getCategoriesApi } from '../api/categories'
 import StatusTag from '../components/StatusTag.vue'
 import { useAuthStore } from '../store/auth'
 import { localBookTitle, localCategoryName } from '../utils/format'
+import { assetUrl } from '../utils/url'
 
 const { t, locale } = useI18n()
 const auth = useAuthStore()
@@ -130,4 +131,3 @@ async function borrow(row) {
 }
 onMounted(() => { loadCategories(); load() })
 </script>
-

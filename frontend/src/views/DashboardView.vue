@@ -61,13 +61,18 @@
 </template>
 
 <script setup>
-import * as echarts from 'echarts'
+import { LineChart, PieChart } from 'echarts/charts'
+import { GridComponent, TooltipComponent } from 'echarts/components'
+import * as echarts from 'echarts/core'
+import { CanvasRenderer } from 'echarts/renderers'
 import { computed, nextTick, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { getDashboardStatsApi } from '../api/dashboard'
 import StatusTag from '../components/StatusTag.vue'
 import { useAuthStore } from '../store/auth'
 import { localBookTitle } from '../utils/format'
+
+echarts.use([LineChart, PieChart, GridComponent, TooltipComponent, CanvasRenderer])
 
 const { t, locale } = useI18n()
 const auth = useAuthStore()
@@ -106,4 +111,3 @@ function renderCharts() {
 
 onMounted(load)
 </script>
-

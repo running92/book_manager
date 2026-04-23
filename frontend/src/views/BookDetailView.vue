@@ -3,7 +3,7 @@
     <el-button icon="ArrowLeft" @click="$router.back()">{{ t('common.back') }}</el-button>
     <el-row :gutter="24" style="margin-top:18px">
       <el-col :span="6">
-        <img v-if="book.cover_image" :src="book.cover_image" style="width:100%;border-radius:8px" />
+        <img v-if="book.cover_image" :src="assetUrl(book.cover_image)" style="width:100%;border-radius:8px" />
         <div v-else style="height:280px;background:#e5e7eb;border-radius:8px"></div>
       </el-col>
       <el-col :span="18">
@@ -33,6 +33,7 @@ import { getBookApi } from '../api/books'
 import StatusTag from '../components/StatusTag.vue'
 import { useAuthStore } from '../store/auth'
 import { localBookTitle, localCategoryName } from '../utils/format'
+import { assetUrl } from '../utils/url'
 
 const { t, locale } = useI18n()
 const route = useRoute()
@@ -44,4 +45,3 @@ async function load() { book.value = await getBookApi(route.params.id) }
 async function borrow() { await borrowBookApi({ book_id: book.value.id }); ElMessage.success(t('common.success')); load() }
 onMounted(load)
 </script>
-
